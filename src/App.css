@@ -1,4 +1,8 @@
-* {
+.cart-image {
+  width: 100px;
+  height: 100px;
+}
+/* * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -15,7 +19,6 @@
 .design,
 .development {
   display: flex;
-  height: 90vh;
   align-items: center;
   justify-content: center;
   font-size: 3rem;
@@ -28,6 +31,7 @@
   background-repeat: no-repeat;
   color: #fff;
   font-size: 100px;
+  height: 90vh;
 }
 
 .services {
@@ -36,6 +40,8 @@
   background-size: cover;
   background-repeat: no-repeat;
   color: #fff;
+
+  height: 90vh;
   font-size: 100px;
 }
 
@@ -55,6 +61,7 @@
   background-repeat: no-repeat;
   color: #fff;
   font-size: 100px;
+  height: 90vh;
 }
 
 .sign-up {
@@ -65,6 +72,7 @@
   color: #fff;
   font-size: 100px;
   text-decoration: none;
+  height: 90vh;
 }
 
 .marketing {
@@ -74,6 +82,7 @@
   background-repeat: no-repeat;
   color: #fff;
   font-size: 100px;
+  height: 90vh;
 }
 
 .consulting {
@@ -83,6 +92,7 @@
   background-repeat: no-repeat;
   color: #fff;
   font-size: 100px;
+  height: 90vh;
 }
 
 .design {
@@ -92,6 +102,7 @@
   background-repeat: no-repeat;
   color: #fff;
   font-size: 100px;
+  height: 90vh;
 }
 
 .development {
@@ -101,4 +112,5 @@
   background-repeat: no-repeat;
   color: #fff;
   font-size: 100px;
-}
+  height: 90vh;
+} */

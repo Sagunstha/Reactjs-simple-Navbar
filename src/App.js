@@ -1,33 +1,22 @@
-import React from 'react';
-import Navbar from './components/Navbar';
-import './App.css';
-import Home from './components/pages/Home';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Services from './components/pages/Services';
-import Products from './components/pages/Products';
-import ContactUs from './components/pages/ContactUs';
-import SignUp from './components/pages/SignUp';
-import Marketing from './components/pages/Marketing';
-import Consulting from './components/pages/Consulting';
-import Design from './components/pages/Design';
-import Development from './components/pages/Development'
+import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import ProductListing from "./components/container/ProductListing";
+import Header from "./components/container/Header";
+import "./App.css";
+import ProductDetails from "./components/container/ProductDetails";
 
 function App() {
   return (
-    <Router>
-      <Navbar />
-      <Switch>
-        <Route path='/' exact component={Home} />
-        <Route path='/services' component={Services} />
-        <Route path='/products' component={Products} />
-        <Route path='/contact-us' component={ContactUs} />
-        <Route path='/sign-up' component={SignUp} />
-        <Route path='/marketing' component={Marketing} />
-        <Route path='/consulting' component={Consulting} />
-        <Route path='/Design' component={Design} />
-        <Route path='/Development' component={Development} />
-      </Switch>
-    </Router>
+    <div className="App">
+      <Router>
+        <Header />
+        <Switch>
+          <Route path="/" exact component={ProductListing} />
+          <Route path="/product/:productId" component={ProductDetails} />
+          <Route>404 Not Found!</Route>
+        </Switch>
+      </Router>
+    </div>
   );
 }
 
