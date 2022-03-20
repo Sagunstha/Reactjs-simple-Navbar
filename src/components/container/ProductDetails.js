@@ -1,55 +1,63 @@
-import React, { useEffect } from "react";
-import axios from "axios";
-import { useParams } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
+import queryString from "query-string";
 import { useDispatch, useSelector } from "react-redux";
 import { selectedProducts } from "../../redux/actions/productAction ";
 import { removeselectedProducts } from "../../redux/actions/productAction ";
 
-const ProductDetails = () => {
-  const { productId } = useParams();
-  console.log("pid:", productId);
-  let product = useSelector((state) => state.product);
-  const { image, title, price, category, description } = product;
+import axios from "axios";
+
+const ProductDetail = () => {
+  const product = useSelector((state) => state.product);
+  const location = useLocation();
   const dispatch = useDispatch();
-  const fetchProductDetail = async (id) => {
+  const [productDetails, setProductDetails] = useState();
+
+  const productId = queryString.parse(location.search)?.id;
+  console.log("pid", productId);
+
+  const fetchProductDetails = async (productId) => {
     const response = await axios
-      .get(`https://fakestoreapi.com/products/${id}`)
+      .get(`https://fakestoreapi.com/products/${productId}`)
       .catch((err) => {
-        console.log("Err: ", err);
+        console.log("Err", err);
       });
-    dispatch(selectedProducts(response.data));
+    if (response.status == 200) {
+      setProductDetails(response.data);
+      dispatch(selectedProducts(response.data));
+    }
+
   };
+  console.log("first",productDetails)
 
   useEffect(() => {
-    if (productId && productId !== "") fetchProductDetail(productId);
+    if (productId && productId !== "") fetchProductDetails(productId);
     return () => {
       dispatch(removeselectedProducts());
     };
   }, [productId]);
+  
+
   return (
-    <div>
+    <div className="ui grid container">
       {Object.keys(product).length === 0 ? (
-        <div>...Loading</div>
+        <div className="loading-pos"></div>
       ) : (
-        <div>
-          <div>
-            <div>
-              <div>
-                <img src={image} />
+        <div className="">
+          <div className="">
+            <div className="">
+              <div className="">
+                <img className="for-image" src={product.image} />
               </div>
               <div>
-                <h1>{title}</h1>
-                <h2>
-                  <a>${price}</a>
-                </h2>
-                <h3>{category}</h3>
-                <p>{description}</p>
-                <div>
-                  <div>
-                    <i></i>
-                  </div>
-                  <div>Add to Cart</div>
-                </div>
+                <p>{product.title}</p>
+                {/* or of we define  const { image, title, price, category, description } = product; then
+                only {title} {price} can be done*/}
+                <p>
+                  <a>${product.price}</a>
+                </p>
+                <p>{product.category}</p>
+                <p>{product.description}</p>
               </div>
             </div>
           </div>
@@ -59,4 +67,4 @@ const ProductDetails = () => {
   );
 };
 
-export default ProductDetails;
+export default ProductDetail;

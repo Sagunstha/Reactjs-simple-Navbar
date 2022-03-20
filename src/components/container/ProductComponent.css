@@ -1,0 +1,16 @@
+.flex{
+    display: flex;
+    flex-direction: row;
+}
+.left_side{
+    width: 30%;
+}
+.product_in_detail{
+    width: 70%;
+   
+}
+.for-image{
+    width: 200px;
+    height: 300px;
+    display: flex;
+}

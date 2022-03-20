@@ -1,7 +1,21 @@
-.cart-image {
-  width: 100px;
-  height: 100px;
+.container{
+  margin:0 50px ;
 }
+
+.dropdown-category{
+  width: 200px;
+}
+.signup_home{
+  padding:10px;
+  background-color: black;
+  color:white;
+
+ 
+}
+
+
+
+
 /* * {
   box-sizing: border-box;
   margin: 0;
